@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from "@angular/material/card";
-import { MatInputModule } from '@angular/material/input';
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
+import {ErrorStateMatcher} from "@angular/material/core";
+import {TextConfirmDialogComponent} from "../error/text-confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+
+export class LoginErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -11,40 +20,51 @@ import {Router} from "@angular/router";
 })
 
 export class LoginComponent {
+  loginForm_usernameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  errorMatcher: LoginErrorStateMatcher = new LoginErrorStateMatcher();
+  loginForm_passwordControl = new FormControl('', [Validators.required]);
+  loginFromGroup: FormGroup = new FormGroup({
+    username: this.loginForm_usernameControl,
+    password: this.loginForm_passwordControl});
+  invalidCredentials: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: MatDialog) { }
 
   hide = true;
   submitBtn: boolean = false;
-  username: boolean = false;
-  password: boolean = false;
+  submitBtnColor: any = '#7e7e7e';
 
   onInput(event: any) {
-    if (event.target.name === 'username') {
-      if (event.target.value.length < 3) {
-        this.username = true;
-        this.submitBtn = false;
-      } else {
-        this.username = false;
-        this.submitBtn = true;
-      }
-    } else if (event.target.name === 'password') {
-      if (event.target.value.length > 3) {
-        this.password = true;
-        this.submitBtn = false;
-      } else {
-        this.password = false;
-        this.submitBtn = true;
-      }
+    this.invalidCredentials = false;
+    if (this.loginForm_usernameControl.valid && this.loginForm_passwordControl.valid) {
+      this.submitBtn = true;
+      this.submitBtnColor = '#1976d2';
+    } else {
+      this.submitBtnColor = false;
+      this.submitBtnColor = '#7e7e7e'
     }
   }
 
-  onSubmit(event: any) {
+  onSubmit(username: string, password: string) {
+    this.loginForm_usernameControl.markAsTouched();
+    this.loginForm_passwordControl.markAsTouched();
     let AuthService: AuthenticationService = new AuthenticationService();
-    let Authorized = AuthService.login(event.username, event.password);
+    let Authorized: boolean = AuthService.login(username, password);
     if (Authorized) {
-      this.router.navigate(['/home']).then(r => console.log(r));
+      this.router.navigate(["home"]);
+    } else {
+      this.invalidCredentials = true;
+      this.submitBtn = false;
+      this.submitBtnColor = '#7e7e7e'
+      this.openDialog('Login Failed', 'Your username or password is incorrect.');
     }
+  }
+
+  openDialog(title: string, message: string): void {
+    this.dialog.open(TextConfirmDialogComponent, {
+      width: '250px',
+      data: {title, message}
+    });
   }
 
 

@@ -12,13 +12,19 @@ import {MatIconModule} from "@angular/material/icon";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import { CreateaccountComponent } from './login/createaccount.component';
+import { ErrorComponent } from './error/error.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { TextConfirmDialogComponent } from './error/text-confirm-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CreateaccountComponent
+    CreateaccountComponent,
+    ErrorComponent,
+    TextConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,9 @@ import { CreateaccountComponent } from './login/createaccount.component';
     MatInputModule,
     MatIconModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
