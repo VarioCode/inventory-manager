@@ -1,0 +1,74 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  height: 60px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 10;
+}
+
+.footer span {
+  font-size: 10px;
+}
+
+.footer mat-icon {
+  color: red;
+  font-size: 10px;
+  display: inline-flex;
+  width: 10px;
+}
+
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav-content {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.sidenav-item:hover {
+  background: #a8a8a8;
+}
+
+.example-sidenav {
+  padding: 20px;
+  background: #D6D6D6;
+}
+
+.example-sidenav mat-icon {
+  margin-right: 8px;
+}
+
+.example-sidenav span {
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+}
+

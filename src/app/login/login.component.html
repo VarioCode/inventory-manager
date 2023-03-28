@@ -5,17 +5,17 @@
       <mat-card-subtitle>Please login to continue</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-    <form [formGroup]="loginFromGroup"  (submit)="onSubmit(username.value, password.value)" method="post" fxLayoutAlign="stretch" fxLayout="column">
+    <form [formGroup]="loginFromGroup" method="post" fxLayoutAlign="stretch" fxLayout="column">
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input #username [formControl]="loginForm_usernameControl" (input)="onInput($event)" matInput name="username" placeholder="Username" [errorStateMatcher]="errorMatcher">
+        <input #username [formControl]="loginForm_usernameControl" matInput name="username" placeholder="Username" [errorStateMatcher]="errorMatcher">
         <mat-error *ngIf="loginForm_usernameControl.hasError('minlength')">Username must be at least 3 characters long</mat-error>
         <mat-error *ngIf="loginForm_usernameControl.hasError('required')">Username is <strong>required</strong></mat-error>
         <mat-error *ngIf="invalidCredentials">Invalid credentials</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input #password [formControl]="loginForm_passwordControl" (input)="onInput($event)" name="password" matInput [type]="hide ? 'password' : 'text'">
+        <input #password [formControl]="loginForm_passwordControl" name="password" matInput [type]="hide ? 'password' : 'text'">
         <mat-error *ngIf="loginForm_passwordControl.hasError('required')">Password is <strong>required</strong></mat-error>
         <mat-error *ngIf="invalidCredentials">Invalid credentials</mat-error>
         <button type="button"
@@ -27,11 +27,11 @@
       </mat-form-field>
       <div id="card-actions">
         <button (click)="onSubmit(username.value, password.value)"
-                [style.background-color]="submitBtnColor"
-                disabled="{{ !submitBtn }}"
+                [style.background-color]="loginFromGroup.valid ? '#1976d2' : '#7e7e7e'"
+                disabled="{{ loginFromGroup.invalid }}"
                 type="submit"
                 mat-raised-button>Login</button>
-        <p><a [routerLink]="['/create-account']" >Create a account</a></p>
+        <p><a [routerLink]="['create']" >Create a account</a></p>
       </div>
     </form>
     </mat-card-content>

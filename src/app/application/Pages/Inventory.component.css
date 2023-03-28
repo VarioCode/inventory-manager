@@ -1,0 +1,12 @@
+.scrollable-content {
+  overflow-y: auto;
+}
+
+.paginator {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  text-align: center;
+}

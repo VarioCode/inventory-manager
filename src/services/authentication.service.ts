@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,10 @@ export class AuthenticationService {
     } else {
       return false;
     }
+  }
+
+  checkLogin(): boolean {
+    //TODO: Implement this with API, and check the JWT token
+    return true;
   }
 }

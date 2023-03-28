@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
@@ -34,24 +34,13 @@ export class LoginComponent {
   submitBtn: boolean = false;
   submitBtnColor: any = '#7e7e7e';
 
-  onInput(event: any) {
-    this.invalidCredentials = false;
-    if (this.loginForm_usernameControl.valid && this.loginForm_passwordControl.valid) {
-      this.submitBtn = true;
-      this.submitBtnColor = '#1976d2';
-    } else {
-      this.submitBtnColor = false;
-      this.submitBtnColor = '#7e7e7e'
-    }
-  }
-
   onSubmit(username: string, password: string) {
     this.loginForm_usernameControl.markAsTouched();
     this.loginForm_passwordControl.markAsTouched();
     let AuthService: AuthenticationService = new AuthenticationService();
     let Authorized: boolean = AuthService.login(username, password);
     if (Authorized) {
-      this.router.navigate(["home"]);
+      this.router.navigate([""]);
     } else {
       this.invalidCredentials = true;
       this.submitBtn = false;

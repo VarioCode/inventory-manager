@@ -1,0 +1,32 @@
+<mat-sidenav-container class="example-container" id="sidenavContainer">
+  <div class="toolbar">
+    <toolbar></toolbar>
+  </div>
+    <mat-sidenav mode="over" class="example-sidenav" [opened]="nav.isSideNavOpen" (openedChange)="openSideNav($event)">
+      <mat-nav-list>
+        <a class="sidenav-item" routerLink="dashboard" routerLinkActive="active" (click)="closeSideNav()">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+        <a class="sidenav-item" routerLink="inventory" routerLinkActive="active" (click)="closeSideNav()">
+          <mat-icon>inventory2</mat-icon>
+          <span>Inventory</span>
+        </a>
+        <a class="sidenav-item" routerLink="orders" routerLinkActive="active" (click)="closeSideNav()">
+          <mat-icon>list_alt</mat-icon>
+          <span>Orders</span>
+        </a>
+        <a class="sidenav-item" routerLink="customers" routerLinkActive="active" (click)="closeSideNav()">
+          <mat-icon>group</mat-icon>
+          <span>Customers</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  <footer class="footer">
+    <!--  Add footer here-->
+    <span>Made with <mat-icon>{{ "favorite" }}</mat-icon> by Jarno Crans</span>
+  </footer>
+</mat-sidenav-container>

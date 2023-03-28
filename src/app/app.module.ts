@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
+import { ToolbarComponent } from './application/toolbar.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
@@ -16,15 +16,30 @@ import { ErrorComponent } from './error/error.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { TextConfirmDialogComponent } from './error/text-confirm-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { HomepageComponent } from './application/homepage.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { DashboardComponent } from './application/Pages/dashboard.component';
+import { OrdersComponent } from './application/Pages/orders.component';
+import { CustomersComponent } from './application/Pages/customers.component';
+import { InventoryComponent } from "./application/Pages/Inventory.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    ToolbarComponent,
     LoginComponent,
     CreateaccountComponent,
     ErrorComponent,
-    TextConfirmDialogComponent
+    TextConfirmDialogComponent,
+    HomepageComponent,
+    DashboardComponent,
+    InventoryComponent,
+    OrdersComponent,
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +51,11 @@ import {MatDialogModule} from "@angular/material/dialog";
     FlexLayoutModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
