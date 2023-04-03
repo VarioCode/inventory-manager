@@ -1,12 +1,10 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
-  constructor() {
-  }
+  constructor() {}
 
   login(username: string, password: string) {
     //TODO: Implement this with API

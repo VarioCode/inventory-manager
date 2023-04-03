@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextConfirmDialogComponent } from './text-confirm-dialog.component';
+import { AddNewInventoryItemComponent } from './add-new-inventory-item.component';
 
 describe('TextConfirmDialogComponent', () => {
-  let component: TextConfirmDialogComponent;
-  let fixture: ComponentFixture<TextConfirmDialogComponent>;
+  let component: AddNewInventoryItemComponent;
+  let fixture: ComponentFixture<AddNewInventoryItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextConfirmDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [AddNewInventoryItemComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(TextConfirmDialogComponent);
+    fixture = TestBed.createComponent(AddNewInventoryItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
