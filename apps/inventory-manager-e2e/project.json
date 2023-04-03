@@ -1,0 +1,44 @@
+{
+  "name": "inventory-manager-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/inventory-manager-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "devServerTarget": "inventory-manager:serve",
+        "watch": true,
+        "headless": false,
+        "cypressConfig": "apps/inventory-manager-e2e/cypress.config.ts"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "inventory-manager:serve:production"
+        }
+      }
+    },
+    "cypress-run": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "devServerTarget": "inventory-manager:serve",
+        "cypressConfig": "apps/inventory-manager-e2e/cypress.config.ts"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "inventory-manager:serve:production"
+        }
+      }
+    },
+    "cypress-open": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "watch": true,
+        "headless": false,
+        "cypressConfig": "apps/inventory-manager-e2e/cypress.config.ts"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["inventory-manager"]
+}

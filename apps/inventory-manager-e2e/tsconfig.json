@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "sourceMap": false,
+    "types": ["cypress"],
+    "outDir": "../../dist/out-tsc"
+  },
+  "exclude": [
+    "./cypress.config.ts",
+    "node_modules",
+    "cypress",
+    "**/*.cy.tsx",
+    "src/**/*"
+  ]
+}
