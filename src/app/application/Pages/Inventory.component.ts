@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
+import {AddNewInventoryItemComponent} from "../Dialogs/add-new-inventory-item.component";
+import {InventoryItemModel} from "../../models/inventory-item.model";
 
 @Component({
   selector: 'app-inventory',
@@ -36,6 +38,10 @@ export class InventoryComponent {
   }
 
   onFabClick() {
-    this.dialog
+    let data: InventoryItemModel = new InventoryItemModel();
+    this.dialog.open(AddNewInventoryItemComponent, {
+      width: "70%",
+      data: {subtitle: "Fill in the" + Object.keys(data)[0];}
+    })
   }
 }

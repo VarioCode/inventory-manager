@@ -22,5 +22,14 @@
   text-align: center;
 }
 
-:host(app-inventory) { width:100% }
+mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  max-height: 50px;
+}
+
+:host(app-inventory) { width:100%; }
 

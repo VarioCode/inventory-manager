@@ -1,25 +1,9 @@
 <h1 mat-dialog-title>Add a new inventory Item</h1>
-<div>
-  <form
-    [formGroup]="newItemFormGroup"
-    method="post"
-  >
-    <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="data.name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Serial Number" [(ngModel)]="data.serialNumber">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Manufacturer" [(ngModel)]="data.manufacturer">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Description" [(ngModel)]="data.description">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Price" [(ngModel)]="data.price">
-    </mat-form-field>
-  </form>
+<h3>{{subtitle}}</h3>
+<div class="content">
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="data.name">
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>

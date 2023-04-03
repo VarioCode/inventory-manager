@@ -1,19 +1,20 @@
-<div class="content">
-  <div class="scrollable-content" (scroll)="onScroll($event)">
-    <mat-spinner *ngIf=""></mat-spinner>
-  </div>
-  <div class="fab-add-button">
-    <button mat-fab aria-label="Add a new item to the inventory" (click)="onFabClick()" >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-  <div class="paginator">
-     <mat-paginator [length]="totalPages"
+<div>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div *ngIf="!isLoading" class="content">
+    <div class="scrollable-content" (scroll)="onScroll($event)">
+    </div>
+    <div class="fab-add-button">
+      <button mat-fab aria-label="Add a new item to the inventory" (click)="onFabClick()" >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="paginator">
+      <mat-paginator [length]="totalPages"
                      [pageSize]="selectedPageSize"
                      [pageSizeOptions]="selectedPageSizeOptions"
                      (page)="onPageChange($event)"
                      aria-label="Select page">
-     </mat-paginator>
+      </mat-paginator>
+    </div>
   </div>
-
 </div>
