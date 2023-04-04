@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Add a new inventory Item</h1>
-<h3>{{ subtitle }}</h3>
 <div class="content">
   <mat-form-field>
-    <input matInput placeholder="Name" [(ngModel)]="data.subtitle" />
+    <mat-label>data.subtitle</mat-label>
+    <input matInput placeholder="Name" [(ngModel)]="data" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="newItem" cdkFocusInitial>Save</button>
   <button mat-button [mat-dialog-close]="false">Cancel</button>
 </div>

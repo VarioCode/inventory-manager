@@ -5,6 +5,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { InventoryService } from '../../services/inventory.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TextConfirmDialogData} from "../../error/text-confirm-dialog.component";
+import {InventoryComponent} from "../Pages/Inventory.component";
 
 export interface AddNewInventoryItemData {
   title: string;
@@ -18,6 +19,7 @@ export interface AddNewInventoryItemData {
 })
 export class AddNewInventoryItemComponent {
   subtitle: string = "";
+  newItem: InventoryItemModel = new InventoryItemModel();
 
   constructor(
     public dialogRef: MatDialogRef<AddNewInventoryItemComponent>,
