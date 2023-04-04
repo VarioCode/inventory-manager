@@ -40,8 +40,7 @@ export class InventoryComponent {
   onFabClick() {
     let data: InventoryItemModel = new InventoryItemModel();
     this.dialog.open(AddNewInventoryItemComponent, {
-      width: "70%",
-      data: {subtitle: "Fill in the" + Object.keys(data)[0];}
+      data: {subtitle: "Fill in the " + Object.keys(data)[0]}
     })
   }
 }

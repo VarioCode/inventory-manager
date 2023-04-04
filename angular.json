@@ -1,9 +1,9 @@
-/**/{
-  "$schema": "../../node_modules/@angular/cli/lib/config/schema.json",
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "inv-manager": {
+    "inventory-manager": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,19 +13,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/inv-manager",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "outputPath": "dist/inventory-manager",
+            "index": "apps/inventory-manager/src/index.html",
+            "main": "apps/inventory-manager/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "apps/inventory-manager/tsconfig.app.json",
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/inventory-manager/src/styles.css"
             ],
             "scripts": []
           },
@@ -60,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "inv-manager:build:production"
+              "browserTarget": "inventory-manager:build:production"
             },
             "development": {
-              "browserTarget": "inv-manager:build:development"
+              "browserTarget": "inventory-manager:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,31 +67,75 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "inv-manager:build"
+            "browserTarget": "inventory-manager:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/inventory-manager/src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "inventory-manager:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "inventory-manager:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "inventory-manager:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "inventory-manager:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "inventory-manager:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "inventory-manager:serve:production"
+            }
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }

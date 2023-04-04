@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nx serve",
-    "build": "nx build",
-    "watch": "nx build --watch --configuration development",
-    "test": "nx test",
-    "e2e": "nx e2e",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "e2e": "ng e2e",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "lint": "nx lint"
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -34,7 +33,7 @@
     "@angular-devkit/build-angular": "^15.1.4",
     "@angular-devkit/core": "~15.1.4",
     "@angular-devkit/schematics": "~15.1.4",
-    "@angular/cli": "~15.1.4",
+    "@angular/cli": "^15.2.4",
     "@angular/compiler-cli": "^15.1.0",
     "@cypress/schematic": "^2.5.0",
     "@nrwl/js": "15.9.2",
