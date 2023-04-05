@@ -18,7 +18,6 @@ export interface AddNewInventoryItemData {
   styleUrls: ['./add-new-inventory-item.component.css'],
 })
 export class AddNewInventoryItemComponent {
-  subtitle: string = "";
   newItem: InventoryItemModel = new InventoryItemModel();
 
   constructor(
