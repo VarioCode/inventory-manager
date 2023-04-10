@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddNewInventoryItemComponent} from "../Dialogs/add-new-inventory-item.component";
 import {InventoryItemModel} from "../../models/inventory-item.model";
+import {ThemePalette} from "@angular/material/core";
 
 @Component({
   selector: 'app-inventory',
@@ -10,6 +11,7 @@ import {InventoryItemModel} from "../../models/inventory-item.model";
 })
 export class InventoryComponent {
   isLoading: boolean = true;
+  colorLoadingBar: ThemePalette = 'accent';
 
   selectedPageSize: number = 10;
   selectedPageSizeOptions: number[] = [5, 10, 25, 100];
@@ -23,9 +25,12 @@ export class InventoryComponent {
 
   getInventory() {
     //TODO: Get inventory from API
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 10000);
+
+    // Simulated loading
+    // setTimeout(() => {
+    //   this.isLoading = false;
+    // }, 10000);
+    this.isLoading = false;
   }
 
   onPageChange($event: any) {
@@ -38,9 +43,8 @@ export class InventoryComponent {
   }
 
   onFabClick() {
-    let data: InventoryItemModel = new InventoryItemModel();
     this.dialog.open(AddNewInventoryItemComponent, {
-      data: {subtitle: "Fill in the " + Object.keys(data)[0]}
+      data: {subtitle: "Add new inventory item"},
     })
   }
 }

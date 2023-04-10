@@ -1,8 +1,21 @@
+.subtitle {
+  justify-content: center;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.content mat-form-field {
+  padding: 10px;
+}
+
+mat-step {
+  justify-self: center;
+  align-self: center;
 }
 
 :host(app-add-new-inventory-item) {

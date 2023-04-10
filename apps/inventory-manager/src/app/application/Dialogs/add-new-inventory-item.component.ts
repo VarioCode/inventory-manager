@@ -1,15 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { InventoryItemModel } from '../../models/inventory-item.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
-import { InventoryService } from '../../services/inventory.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TextConfirmDialogData} from "../../error/text-confirm-dialog.component";
-import {InventoryComponent} from "../Pages/Inventory.component";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 export interface AddNewInventoryItemData {
   title: string;
-  subtitle: string;
+  InputLabel: string;
 }
 
 @Component({
@@ -20,8 +16,30 @@ export interface AddNewInventoryItemData {
 export class AddNewInventoryItemComponent {
   newItem: InventoryItemModel = new InventoryItemModel();
 
+  // Form groups
+  BasicInfoFormGroup: FormGroup = this._formBuilder.group({
+    Name: new FormControl('', [Validators.required]),
+    Description: new FormControl('', [Validators.required]),
+  });
+  IdentificationInfoFormGroup: FormGroup = this._formBuilder.group({
+    SerialNumber: new FormControl('', [Validators.required]),
+    Category: new FormControl('', [Validators.required]),
+    Manufacturer: new FormControl('', [Validators.required]),
+  });
+  InventoryInfoFormGroup: FormGroup = this._formBuilder.group({
+    Price: new FormControl('', [Validators.required]),
+    Quantity: new FormControl('', [Validators.required]),
+  });
+
   constructor(
+    private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddNewInventoryItemComponent>,
     @Inject(MAT_DIALOG_DATA) public data: AddNewInventoryItemData
   ) {}
+
+  protected readonly name = name;
+
+  onSumbit($event: MouseEvent) {
+    
+  }
 }

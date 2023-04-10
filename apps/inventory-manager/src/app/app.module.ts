@@ -28,6 +28,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddNewInventoryItemComponent } from './application/Dialogs/add-new-inventory-item.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     FormsModule,
+    MatProgressBarModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

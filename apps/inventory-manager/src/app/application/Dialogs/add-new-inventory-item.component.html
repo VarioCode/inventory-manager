@@ -1,9 +1,75 @@
 <h1 mat-dialog-title>Add a new inventory Item</h1>
 <div class="content">
-  <mat-form-field>
-    <mat-label>data.subtitle</mat-label>
-    <input matInput placeholder="Name" [(ngModel)]="data" />
-  </mat-form-field>
+  <mat-stepper orientation="vertical" [linear]="true" #stepper>
+    <mat-step [stepControl]="BasicInfoFormGroup">
+      <form [formGroup]="BasicInfoFormGroup">
+        <ng-template matStepLabel>Basic Information</ng-template>
+        <mat-form-field appearance="outline" >
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" required #name formControlName="Name"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Description" required #desc formControlName="Description"/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="IdentificationInfoFormGroup">
+      <form [formGroup]="IdentificationInfoFormGroup">
+        <ng-template matStepLabel>Identification Information</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>SerialNumber</mat-label>
+          <input matInput placeholder="SerialNumber" required #snr ] formControlName="SerialNumber" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="Category" required #cat formControlName="Category"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Manufacturer</mat-label>
+          <input matInput placeholder="Manufacturer" required #man formControlName="Manufacturer"/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [formGroup]="InventoryInfoFormGroup">
+      <form [formGroup]="InventoryInfoFormGroup">
+        <ng-template matStepLabel>Inventory Information</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Price" required #p formControlName="Price"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Quantity</mat-label>
+          <input matInput placeholder="Quantity" required #q formControlName="Quantity"/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirm new item</ng-template>
+      <p><b>Name:</b> {{name.value}}</p>
+      <p><b>Description:</b> {{desc.value}}</p>
+      <p><b>SerialNumber:</b> {{snr.value}}</p>
+      <p><b>Category:</b> {{cat.value}}</p>
+      <p><b>Manufacturer:</b> {{man.value}}</p>
+      <p><b>Price:</b> {{p.value}}</p>
+      <p><b>Quantity:</b> {{q.value}}</p>
+      <div>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="onSumbit($event)">Confirm</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="newItem" cdkFocusInitial>Save</button>
