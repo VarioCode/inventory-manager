@@ -9,6 +9,10 @@
   overflow-y: auto;
 }
 
+.scrollable-content table {
+  width: 100%;
+}
+
 .fab-add-button {
   justify-self: flex-end;
   margin: 10px;

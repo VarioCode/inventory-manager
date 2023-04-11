@@ -1,4 +1,5 @@
 export class InventoryItemModel {
+  id: number;
   name: string;
   description: string;
   serialNumber: string;
@@ -8,6 +9,7 @@ export class InventoryItemModel {
   quantity?: number;
 
   constructor() {
+    this.id = 0;
     this.name = '';
     this.serialNumber = '';
     this.description = '';
@@ -18,13 +20,20 @@ export class InventoryItemModel {
   }
 
   getDummyData(): InventoryItemModel[] {
-    this.name = 'Dummy Item';
-    this.serialNumber = '123456789';
-    this.description = 'This is a dummy item';
-    this.manufacturer = 'Dummy Manufacturer';
-    this.category = 'Dummy Category';
-    this.price = 100;
-    this.quantity = 10;
-    return [this];
+    let tempArray: InventoryItemModel[] = [];
+    for (let i = 0; i < 50; i++) {
+      let newItem = new InventoryItemModel();
+      newItem.id = i+1;
+      newItem.name = 'Dummy Item';
+      newItem.serialNumber = 'item-' + i + '-serial';
+      newItem.description = 'This is a dummy item';
+      newItem.manufacturer = 'Dummy Manufacturer';
+      newItem.category = 'Dummy Category';
+      newItem.price = 100;
+      newItem.quantity = 10;
+      tempArray.push(newItem);
+    }
+
+    return tempArray;
   }
 }

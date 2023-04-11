@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { InventoryItemModel } from '../models/inventory-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InventoryService {
+  newInventoryItemAdded: EventEmitter<InventoryItemModel> = new EventEmitter();
+  private inventoryItems: InventoryItemModel[] = this.getInventoryItems(); //TODO: Remove when API is implemented
   constructor() {}
 
   getInventoryItems(): InventoryItemModel[] {
@@ -32,7 +34,14 @@ export class InventoryService {
     return categories;
   }
 
-  addInventoryItem(result: InventoryItemModel) {
+  getInventoryItem(id: number): InventoryItemModel {
+    //TODO: Get inventory item from the server
+    return this.inventoryItems[id]
+  }
 
+  addInventoryItem(result: InventoryItemModel) {
+    //TODO: Call API to add inventory item to the DB
+
+    this.newInventoryItemAdded.emit(result);
   }
 }

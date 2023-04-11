@@ -30,6 +30,7 @@ import { AddNewInventoryItemComponent } from './application/Dialogs/add-new-inve
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -46,27 +47,28 @@ import {MatStepperModule} from "@angular/material/stepper";
     CustomersComponent,
     AddNewInventoryItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatPaginatorModule,
-    MatSidenavModule,
-    MatListModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
-    MatAutocompleteModule,
-    FormsModule,
-    MatProgressBarModule,
-    MatStepperModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MatCardModule,
+        MatInputModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatPaginatorModule,
+        MatSidenavModule,
+        MatListModule,
+        MatMenuModule,
+        MatProgressSpinnerModule,
+        MatAutocompleteModule,
+        FormsModule,
+        MatProgressBarModule,
+        MatStepperModule,
+        MatTableModule,
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })
