@@ -31,4 +31,8 @@ export class InventoryService {
     }
     return categories;
   }
+
+  addInventoryItem(result: InventoryItemModel) {
+
+  }
 }

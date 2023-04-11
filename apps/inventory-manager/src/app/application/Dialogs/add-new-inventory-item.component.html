@@ -22,15 +22,25 @@
         <ng-template matStepLabel>Identification Information</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>SerialNumber</mat-label>
-          <input matInput placeholder="SerialNumber" required #snr ] formControlName="SerialNumber" />
+          <input matInput placeholder="SerialNumber" required #snr formControlName="SerialNumber"/>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
-          <input matInput placeholder="Category" required #cat formControlName="Category"/>
+          <input matInput placeholder="Category" required #cat formControlName="Category" [matAutocomplete]="catAuto"/>
+          <mat-autocomplete autoActiveFirstOption #catAuto="matAutocomplete">
+            <mat-option *ngFor="let category of categories | async" [value]="category">
+              {{category}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Manufacturer</mat-label>
-          <input matInput placeholder="Manufacturer" required #man formControlName="Manufacturer"/>
+          <input matInput placeholder="Manufacturer" required #man formControlName="Manufacturer" [matAutocomplete]="manAuto"/>
+          <mat-autocomplete autoActiveFirstOption #manAuto="matAutocomplete">
+            <mat-option *ngFor="let manufacturer of manufacturers | async" [value]="manufacturer">
+              {{manufacturer}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -62,7 +72,7 @@
       <p><b>SerialNumber:</b> {{snr.value}}</p>
       <p><b>Category:</b> {{cat.value}}</p>
       <p><b>Manufacturer:</b> {{man.value}}</p>
-      <p><b>Price:</b> {{p.value}}</p>
+      <p><b>Price:</b> €{{p.value}}</p>
       <p><b>Quantity:</b> {{q.value}}</p>
       <div>
         <button mat-button (click)="stepper.reset()">Reset</button>
@@ -72,6 +82,6 @@
   </mat-stepper>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="newItem" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="newItem">Save</button>
   <button mat-button [mat-dialog-close]="false">Cancel</button>
 </div>

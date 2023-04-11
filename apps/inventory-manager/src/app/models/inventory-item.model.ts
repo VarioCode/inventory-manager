@@ -1,7 +1,7 @@
 export class InventoryItemModel {
   name: string;
   description: string;
-  SerialNumber: string;
+  serialNumber: string;
   manufacturer: string;
   category: string;
   price: number;
@@ -9,7 +9,7 @@ export class InventoryItemModel {
 
   constructor() {
     this.name = '';
-    this.SerialNumber = '';
+    this.serialNumber = '';
     this.description = '';
     this.manufacturer = '';
     this.category = '';
@@ -19,7 +19,7 @@ export class InventoryItemModel {
 
   getDummyData(): InventoryItemModel[] {
     this.name = 'Dummy Item';
-    this.SerialNumber = '123456789';
+    this.serialNumber = '123456789';
     this.description = 'This is a dummy item';
     this.manufacturer = 'Dummy Manufacturer';
     this.category = 'Dummy Category';

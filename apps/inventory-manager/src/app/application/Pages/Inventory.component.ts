@@ -3,6 +3,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddNewInventoryItemComponent} from "../Dialogs/add-new-inventory-item.component";
 import {InventoryItemModel} from "../../models/inventory-item.model";
 import {ThemePalette} from "@angular/material/core";
+import {InventoryService} from "../../services/inventory.service";
+import {TextConfirmDialogComponent} from "../../error/text-confirm-dialog.component";
 
 @Component({
   selector: 'app-inventory',
@@ -13,13 +15,18 @@ export class InventoryComponent {
   isLoading: boolean = true;
   colorLoadingBar: ThemePalette = 'accent';
 
+  // Pagination variables
   selectedPageSize: number = 10;
   selectedPageSizeOptions: number[] = [5, 10, 25, 100];
   selectedPage: number = 1;
   totalPages: number = 1;
   totalAmountofProducts: number = 0;
 
-  constructor(private dialog: MatDialog) {
+
+
+  constructor(private dialog: MatDialog,
+              private inventoryService: InventoryService,
+              private errorDialog: MatDialog) {
     this.getInventory();
   }
 
@@ -45,6 +52,14 @@ export class InventoryComponent {
   onFabClick() {
     this.dialog.open(AddNewInventoryItemComponent, {
       data: {subtitle: "Add new inventory item"},
-    })
+    }).afterClosed().subscribe((result: InventoryItemModel) => {
+      if (result) {
+        this.inventoryService.addInventoryItem(result);
+      } else {
+        this.errorDialog.open(TextConfirmDialogComponent, {
+          data: {title: "Error", message: "An error occurred while adding the inventory item."}, width: "400px"
+        });
+      }
+    });
   }
 }
